@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17bfcf",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#112021",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(23, 191, 207, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(23, 191, 207, 0.1);
+        }
+    </style>
+<title>Book Detail - Bibliotheca</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen overflow-x-hidden">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-6 md:px-20 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Bibliotheca</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<nav class="hidden md:flex gap-6 mr-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Catalog</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Curated</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">Archive</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+<div class="ml-2 bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="User profile avatar portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc9QPBcZ410Kaxt7g3q15vSWJ8AngCALU2LbH_GFGzKcF1ppy_tKzzjQ0dIYIct_LTwJU5zlSy-9NzQ6HYZXqTlxhrRXVZD9mD1zm3or-1uZ8eZAJUO-rpEUU_UOfTxBUSY4uLOKmBCy46pQ-UNlN3zm8B098luiBJHK5ju2FcWo5C4BYuMRUFj3dc2orSaxWJUvLFw4lgzMJaQuIM_TGwQ2-i40AUWiWQ2aJikIiYAmApeZHW0flg-mxGHEd0UWM4OKw9UK-bEK0H");'></div>
+</div>
+</header>
+<main class="flex-1 max-w-[1200px] mx-auto w-full px-6 py-10">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+<div class="lg:col-span-5 flex justify-center lg:justify-start">
+<div class="relative group max-w-sm lg:max-w-full">
+<div class="absolute -inset-4 bg-primary/20 blur-2xl rounded-xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
+<div class="relative bg-background-dark/50 rounded-xl overflow-hidden shadow-2xl transform transition-transform hover:scale-[1.02]">
+<img alt="The Shadow of the Wind book cover" class="w-full h-auto object-cover" data-alt="Vintage style gothic book cover design with architectural elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCad75BEqUkFyCurRGSyMxsbqgdgVZ97k8ryH2j8Ywjy3yyucrABdpeEVbsX8Az2ps5_qyfq2BVsZ3YDIMVhA0yEagLcBzphzzj_8D-EyQe0ZPu1WsCdu6wM3ee-4j_6kBtBNQFOINifgKqufAPeuhhFZWJZgjdeKF4mp9nD3JFc5zou-7WMa7Q2swxsDHibfTpQDXzp0ICn1-p43mcQSuWx-f29VQfE9pWUK4sIi6rNHqypkVeWGaxOKRH110Qmwt1ku4pt4ehi0M0"/>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest">Gothic Fiction</span>
+<div class="flex items-center text-primary ml-4">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star_half</span>
+<span class="text-sm font-bold ml-2 text-slate-500">4.8 (12.4k reviews)</span>
+</div>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-5xl lg:text-7xl font-serif mb-4 leading-[1.1]">The Shadow <br/>of the <span class="text-primary italic">Wind</span></h1>
+<p class="text-xl text-slate-600 dark:text-slate-400 mb-8 font-light">
+                            By <a class="text-primary hover:underline underline-offset-4 decoration-primary/50" href="#">Carlos Ruiz Zafón</a> • 2001 • Spanish Literature
+                        </p>
+<div class="flex flex-wrap gap-4 mt-2">
+<button class="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all flex items-center gap-3 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">auto_stories</span>
+                                Start Reading
+                            </button>
+<button class="px-8 py-4 bg-primary/10 text-primary border border-primary/30 font-bold rounded-xl hover:bg-primary/20 transition-all flex items-center gap-3">
+<span class="material-symbols-outlined">add</span>
+                                Add to Library
+                            </button>
+</div>
+<div class="grid grid-cols-3 gap-8 mt-12 py-8 border-y border-primary/10">
+<div>
+<p class="text-xs uppercase tracking-widest text-slate-500 mb-1">Pages</p>
+<p class="text-xl font-bold text-slate-800 dark:text-slate-200">487</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-widest text-slate-500 mb-1">Language</p>
+<p class="text-xl font-bold text-slate-800 dark:text-slate-200">English</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-widest text-slate-500 mb-1">Published</p>
+<p class="text-xl font-bold text-slate-800 dark:text-slate-200">2001</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Details & Bio -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-8">
+<h2 class="text-3xl font-serif mb-8 text-slate-900 dark:text-slate-100">Synopsis</h2>
+<div class="prose prose-invert max-w-none text-slate-600 dark:text-slate-400 space-y-6 text-lg leading-relaxed">
+<p>Barcelona, 1945: A city slowly heals in the aftermath of the Spanish Civil War, and Daniel, an antiquarian book dealer's son who mourns the loss of his mother, finds solace in a mysterious book entitled The Shadow of the Wind, by one Julián Carax.</p>
+<p>But when he sets out to find the author's other works, he makes a shocking discovery: someone has been systematically destroying every copy of every book Carax has ever written. In fact, Daniel may have the last of Carax's books in existence. Soon Daniel's seemingly innocent quest opens a door into one of Barcelona's darkest secrets--an epic story of murder, madness, and doomed love.</p>
+</div>
+<div class="mt-16 p-8 rounded-2xl glass-panel">
+<div class="flex items-start gap-6">
+<div class="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 border-2 border-primary/30">
+<img alt="Carlos Ruiz Zafón portrait" class="w-full h-full object-cover" data-alt="Black and white portrait of a male author" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfc0MN8fNVFZZ6Rua1Uf1xvLh0KjybdN9dFDRoz6BKGuivWQzGtHxaOpeiFpQ5ag524RdJj5UitGOU-V9YF1n7JB2wEDUP34LEUR6dQ8XW2ZdqVYbbGTu0b-U9ZMH7iELYfnZQmyXyG0IuIqgG32I1QihGScL3ZltpSpk3usad8Rsv0yNSQ5dcCAa1mLjh4ROwaTX-wzLIMvx0AINMVL80FS7LfPfFYTUCQm8byRUrXZU-Jxy4pFp7VpdQqnol3tlYjMzUo5YH5Zis"/>
+</div>
+<div>
+<p class="text-xs uppercase tracking-widest text-primary font-bold mb-1">About the Author</p>
+<h3 class="text-2xl font-serif text-slate-900 dark:text-slate-100 mb-2">Carlos Ruiz Zafón</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">Carlos Ruiz Zafón was a Spanish novelist. His 2001 novel La Sombra del Viento (The Shadow of the Wind) has sold fifteen million copies worldwide, making it one of the best-selling books of all time.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Stats/Details -->
+<div class="lg:col-span-4 space-y-10">
+<div class="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+<h4 class="text-slate-900 dark:text-slate-100 font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                                Readers Insight
+                            </h4>
+<div class="space-y-4">
+<div class="grid grid-cols-[20px_1fr_40px] items-center gap-3">
+<p class="text-slate-500 text-sm">5</p>
+<div class="h-1.5 flex-1 overflow-hidden rounded-full bg-primary/10">
+<div class="h-full bg-primary" style="width: 70%;"></div>
+</div>
+<p class="text-slate-500 text-xs text-right">70%</p>
+</div>
+<div class="grid grid-cols-[20px_1fr_40px] items-center gap-3">
+<p class="text-slate-500 text-sm">4</p>
+<div class="h-1.5 flex-1 overflow-hidden rounded-full bg-primary/10">
+<div class="h-full bg-primary" style="width: 22%;"></div>
+</div>
+<p class="text-slate-500 text-xs text-right">22%</p>
+</div>
+<div class="grid grid-cols-[20px_1fr_40px] items-center gap-3">
+<p class="text-slate-500 text-sm">3</p>
+<div class="h-1.5 flex-1 overflow-hidden rounded-full bg-primary/10">
+<div class="h-full bg-primary" style="width: 5%;"></div>
+</div>
+<p class="text-slate-500 text-xs text-right">5%</p>
+</div>
+</div>
+<button class="w-full mt-6 text-sm text-primary font-bold hover:underline">View all 12,450 reviews</button>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-widest text-xs">Keywords</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-background-light dark:bg-background-dark border border-primary/20 rounded-full text-xs text-slate-500">Mystery</span>
+<span class="px-3 py-1 bg-background-light dark:bg-background-dark border border-primary/20 rounded-full text-xs text-slate-500">Barcelona</span>
+<span class="px-3 py-1 bg-background-light dark:bg-background-dark border border-primary/20 rounded-full text-xs text-slate-500">Book Lover</span>
+<span class="px-3 py-1 bg-background-light dark:bg-background-dark border border-primary/20 rounded-full text-xs text-slate-500">Gothic</span>
+<span class="px-3 py-1 bg-background-light dark:bg-background-dark border border-primary/20 rounded-full text-xs text-slate-500">Atmospheric</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Related Books -->
+<section class="mt-24">
+<div class="flex items-end justify-between mb-8">
+<div>
+<p class="text-primary font-bold uppercase tracking-widest text-xs mb-2">Explore</p>
+<h2 class="text-3xl font-serif text-slate-900 dark:text-slate-100">Readers also enjoyed</h2>
+</div>
+<a class="text-primary hover:underline font-medium" href="#">Browse related</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+<!-- Book Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[2/3] rounded-lg overflow-hidden bg-background-dark/20 mb-3 border border-primary/10 group-hover:border-primary/40 transition-all">
+<img alt="The Angel's Game" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Mysterious book cover with dark moody aesthetics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-htVl7f7ojx55ilMdml2r1ug5a5LX4-2vbDPVhyFJDtRRQti1gczTpwu9PfUVaLXVinWINMSISCIVgdDHj6RfIMVkPcXB3u_gPelu9O39rGl1YzU49ouW1wsdvM1kO_KLlY9R8aSdNhhm_zGdeZjXGMUSJdaxzDADfX3ixkRJj5Stwmy8Rx3NxtRjEzN-ev-2FpM8T5rsg_DXOtkOpIrWBXep80TcJTY8uC1OaAHaf4w6rtmWrG2G6BKGEpm_E5N0DrsTRFNtSz1E"/>
+</div>
+<h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm group-hover:text-primary transition-colors">The Angel's Game</h3>
+<p class="text-xs text-slate-500">Carlos Ruiz Zafón</p>
+</div>
+<!-- Book Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[2/3] rounded-lg overflow-hidden bg-background-dark/20 mb-3 border border-primary/10 group-hover:border-primary/40 transition-all">
+<img alt="The Thirteenth Tale" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Gothic style book cover with intricate patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwCUfoaYsCB7ZiOb1E51CH5saUooVgfRp7OOO7z_uE2ird59Rkkug8lJUbi_BYNBjg46HCUFHfDPYjaC5oqyQtQeUnPSXuaTPsQvWx3txQ99r-IQX-jfGP-K4scs13K-J3Hdoha3atpaaJOpbSv4azsbc9fdWfVl-PJ8Bf1pTOyDVWQoAtnkzLtW-uNDYzpUTGyfRwL_oGRHd6a_7aZMAclboRHg0tN11TV95xOdHzCdURwPyDc4fazc3vX_j6MG_c-SpLUvsng9Z_"/>
+</div>
+<h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm group-hover:text-primary transition-colors">The Thirteenth Tale</h3>
+<p class="text-xs text-slate-500">Diane Setterfield</p>
+</div>
+<!-- Book Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[2/3] rounded-lg overflow-hidden bg-background-dark/20 mb-3 border border-primary/10 group-hover:border-primary/40 transition-all">
+<img alt="The Prisoner of Heaven" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Dark library themed book cover with gold lettering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYnBEXxgG3FS7KDcyK8vFgAw9NSQdVwbkJ1iQVsOI0aRY_ejqDmMMAmPF84I8thklRguzkvyVVHYX5qEeRRuz_GLlOpZhcYk339nc0B3sZD0Ehl3Yq59StMwDuR0nV0pJ4HdVoQnmigkJl63QXxW4VAz3iumxoC63Adn4Yto0RYmQoLZBZ1_0Y07psU8bOLeigGE28mjriG3LoJtjFqI1nDVout0kcrWb1sZ6LdnkMe003tEPtfvSl25bqwWx2oThKemKblo7hhREV"/>
+</div>
+<h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm group-hover:text-primary transition-colors">The Prisoner of Heaven</h3>
+<p class="text-xs text-slate-500">Carlos Ruiz Zafón</p>
+</div>
+<!-- Book Card 4 -->
+<div class="group cursor-pointer hidden md:block">
+<div class="aspect-[2/3] rounded-lg overflow-hidden bg-background-dark/20 mb-3 border border-primary/10 group-hover:border-primary/40 transition-all">
+<img alt="The Historian" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Classical gothic book cover with architectural sketch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGyYQtgtQ3boRGNzPt8Z5E_ZWgjBKaaguOw1-fbR_RHAoEXyhyJPkPlmBIlgsN26qIeNd4ay4yvm6jfI1YgDRjqMez8qz9xCNA6_XxU-MQizWIAuQFQuqkGgKkoepvE2cbPuTXz3Lzq_ULDFoyBlTM6u787FdxIEvuEZD8F8YA45rlEApnX3hXIoMGgtPl-8uMrVd7HV2u77bqE-KCEdLReoWFo0dv0T2736f1l8LHpDVToy8gUA1W0mqDl9bbd0oqekT1cSzAfvea"/>
+</div>
+<h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm group-hover:text-primary transition-colors">The Historian</h3>
+<p class="text-xs text-slate-500">Elizabeth Kostova</p>
+</div>
+<!-- Book Card 5 -->
+<div class="group cursor-pointer hidden lg:block">
+<div class="aspect-[2/3] rounded-lg overflow-hidden bg-background-dark/20 mb-3 border border-primary/10 group-hover:border-primary/40 transition-all">
+<img alt="Shadow of Night" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract mystical book cover design with deep colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLHFRhYQ4i6GHh05ul1os66V9iyDnM7Kb8BhjwOSomRN1Gcdctt9kGx2ZKwIXGXgCOnXz6Hhbs7qe2ZQoQ2qPLWoNECrIgCR2i49pZEm7cfmG921AsGHc7HKgJuWUH8AdlrME8bY3FLbXTiWmWgnJLJMfLQ0o81XD7dbh2djub8lEA52IEuAZ2g7K7hVlRV38w-0MKWsH0tccjaoHV6ykKSY68vrNNPyOWfQ02JjmyhR2WaBRKVghckDUDsiseLalAXntYumjGsyo9"/>
+</div>
+<h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm group-hover:text-primary transition-colors">Shadow of Night</h3>
+<p class="text-xs text-slate-500">Deborah Harkness</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-primary/10 mt-20 py-12 px-6 md:px-20 bg-background-light dark:bg-background-dark">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3 text-primary/60">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-bold">Bibliotheca Archive</span>
+</div>
+<p class="text-slate-500 text-sm italic font-serif">"Books are mirrors: you only see in them what you already have inside you."</p>
+<div class="flex gap-6 text-sm text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

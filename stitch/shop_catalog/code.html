@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bibliotheca - Shop Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17bfcf",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#112021",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .liquid-glass {
+            background: rgba(23, 191, 207, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(23, 191, 207, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .liquid-glass:hover {
+            border: 1px solid rgba(23, 191, 207, 0.4);
+            background: rgba(23, 191, 207, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-background-dark/80 backdrop-blur-md px-6 md:px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/20 rounded-lg">
+<span class="material-symbols-outlined text-primary">auto_stories</span>
+</div>
+<h2 class="text-slate-100 text-xl font-bold leading-tight tracking-tight">Bibliotheca</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-9">
+<a class="text-slate-100 hover:text-primary transition-colors text-sm font-medium" href="#">Home</a>
+<a class="text-primary text-sm font-medium border-b-2 border-primary pb-1" href="#">Catalog</a>
+<a class="text-slate-100 hover:text-primary transition-colors text-sm font-medium" href="#">Library</a>
+<a class="text-slate-100 hover:text-primary transition-colors text-sm font-medium" href="#">Profile</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-primary/10 border border-primary/20 focus-within:border-primary/50 transition-all">
+<div class="text-primary/60 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-lg">search</span>
+</div>
+<input class="w-full min-w-0 flex-1 bg-transparent border-none focus:ring-0 text-slate-100 placeholder:text-primary/40 px-3 text-sm" placeholder="Search masters..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg size-10 bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="User profile avatar portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-zadeawb-0p1omkD6pgc3yhT3je_Gc0GKKJoTR92PwbL72zFoURlEpTZfKgGPMeb3hCNsHzYcue6sMTmUTKNWtp5ZpDSPhWz9XfPTQstVWTWwOHk5_BmOBiTZ27CVtny_4Ez1cL9bZiYPaLV4uk_knfUqqYndZ_LW7Si9eRmw7NB3LFsQ8xbAxcZCGkOjkxRqWlrdlZZSF7NVG4Jsg0I7FjAYzEnM5kGw52ekItQTKLd3BjrYAo2umAB2q9AdrNfLl2k6y7-BBjJD");'></div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<aside class="hidden md:flex w-72 flex-col gap-6 p-8 border-r border-primary/10 bg-background-dark/30">
+<div class="flex flex-col gap-1">
+<h3 class="text-slate-100 text-lg font-bold">Filters</h3>
+<p class="text-primary/60 text-xs uppercase tracking-widest font-semibold">Refine your search</p>
+</div>
+<div class="flex flex-col gap-6">
+<div>
+<p class="text-slate-300 text-sm font-semibold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">category</span> Categories
+                        </p>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between px-3 py-2 rounded-lg bg-primary text-slate-900 font-bold text-sm cursor-pointer shadow-lg shadow-primary/20">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">all_inclusive</span> All Books</span>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-primary/10 text-slate-300 hover:text-primary font-medium text-sm cursor-pointer transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">auto_awesome</span> Fiction</span>
+<span class="text-[10px] bg-primary/10 px-1.5 py-0.5 rounded">124</span>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-primary/10 text-slate-300 hover:text-primary font-medium text-sm cursor-pointer transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">psychology</span> Non-Fiction</span>
+<span class="text-[10px] bg-primary/10 px-1.5 py-0.5 rounded">86</span>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-primary/10 text-slate-300 hover:text-primary font-medium text-sm cursor-pointer transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">biotech</span> Science</span>
+<span class="text-[10px] bg-primary/10 px-1.5 py-0.5 rounded">42</span>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-primary/10 text-slate-300 hover:text-primary font-medium text-sm cursor-pointer transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">history_edu</span> History</span>
+<span class="text-[10px] bg-primary/10 px-1.5 py-0.5 rounded">31</span>
+</div>
+</div>
+</div>
+<div>
+<p class="text-slate-300 text-sm font-semibold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">payments</span> Price Range
+                        </p>
+<div class="px-2">
+<input class="w-full h-1.5 bg-primary/20 rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+<div class="flex justify-between mt-2 text-[10px] text-primary/60 font-mono">
+<span>$0</span>
+<span>$500</span>
+</div>
+</div>
+</div>
+<div>
+<p class="text-slate-300 text-sm font-semibold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">person_search</span> Authors
+                        </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold border border-primary/20 cursor-pointer">Fitzgerald</span>
+<span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold border border-primary/20 cursor-pointer">Orwell</span>
+<span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold border border-primary/20 cursor-pointer">Lee</span>
+<span class="px-2 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold border border-primary/20 cursor-pointer">Tolkien</span>
+</div>
+</div>
+</div>
+<div class="mt-auto flex flex-col gap-4">
+<button class="w-full py-3 bg-primary hover:bg-primary/90 text-background-dark font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary/20">
+                        Apply Filters
+                    </button>
+<button class="w-full py-2 flex items-center justify-center gap-2 text-primary/60 hover:text-primary transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-lg">restart_alt</span> Reset all
+                    </button>
+</div>
+</aside>
+<div class="flex-1 overflow-y-auto px-6 md:px-10 py-8">
+<div class="flex flex-col md:flex-row justify-between items-end gap-4 mb-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-100 text-5xl font-black leading-none tracking-tight">Shop Catalog</h1>
+<p class="text-primary/60 text-lg font-medium">Curating 458 literary masterpieces for your collection.</p>
+</div>
+<div class="flex gap-2 bg-primary/5 p-1 rounded-xl border border-primary/10">
+<button class="px-4 py-2 bg-primary text-background-dark text-xs font-bold rounded-lg shadow-sm">Grid</button>
+<button class="px-4 py-2 text-primary/60 hover:text-primary text-xs font-bold rounded-lg transition-colors">List</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-3 mb-10 pb-2 overflow-x-auto whitespace-nowrap">
+<button class="flex h-10 items-center justify-center gap-x-2 rounded-xl bg-primary/10 border border-primary/20 px-5 hover:bg-primary/20 transition-all group">
+<p class="text-slate-100 text-sm font-bold">In Stock</p>
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform">expand_more</span>
+</button>
+<button class="flex h-10 items-center justify-center gap-x-2 rounded-xl bg-primary/10 border border-primary/20 px-5 hover:bg-primary/20 transition-all group">
+<p class="text-slate-100 text-sm font-bold">New Arrivals</p>
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform">expand_more</span>
+</button>
+<button class="flex h-10 items-center justify-center gap-x-2 rounded-xl bg-primary/10 border border-primary/20 px-5 hover:bg-primary/20 transition-all group">
+<p class="text-slate-100 text-sm font-bold">Top Rated</p>
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform">expand_more</span>
+</button>
+<button class="flex h-10 items-center justify-center gap-x-2 rounded-xl bg-primary/10 border border-primary/20 px-5 hover:bg-primary/20 transition-all group">
+<p class="text-slate-100 text-sm font-bold">Discounted</p>
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform">expand_more</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="liquid-glass group rounded-2xl p-4 flex flex-col transition-all cursor-pointer">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-xl">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Classic book cover with dark elegant design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDswWxGrMButgaDAtU6HCqhp_RFBJNZiIG0hyXqX3Y-KDooj5qGANHU3sJR4ryfyaXP7aiw7QxGlaLeeS2W8mCPvYBPXFysCbyJK3hkJMchi3HaUfU9ufDw3FHnljqf7g2GN94DjxYSC7gF_ZQysrKaGDrRV3pxyB2cHfntnrBwoU2tYR74ctXgY6ALWwEbChZLCxpO9hkyuKnXDbVVs6kmJyDbwfL8V0tX_ADjHQ4rV-JVQXQ4hXzehoRzYKwItaSrbKwqZ5eqnA6e");'></div>
+<div class="absolute top-2 right-2 bg-primary px-2 py-1 rounded text-[10px] font-black text-background-dark uppercase">Bestseller</div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-slate-100 text-lg font-bold group-hover:text-primary transition-colors">The Great Gatsby</h3>
+<p class="text-primary font-mono font-bold">$15.00</p>
+</div>
+<p class="text-primary/60 text-sm font-medium mb-4">F. Scott Fitzgerald</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-primary/10 hover:bg-primary hover:text-background-dark border border-primary/30 text-primary text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
+                                </button>
+<button class="p-2 border border-primary/30 text-primary hover:bg-primary/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<div class="liquid-glass group rounded-2xl p-4 flex flex-col transition-all cursor-pointer">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-xl">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Dystopian book cover design for 1984" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAe33tjCLgM95BAUZLkzUPMDpzoeCKLD7RhT3hGmHEhqX7B7A7jccJ5ookMBwpBlDRQk-nK0M8CY91kKYSssWJ4Onydn2jrGEhSXnP08dKlvqT5ddqAr7zOqLsjyd5U6xOIor_DGvpPK0kXPgoBPnIGc8RTcMrVyC1Z5AkQq1LaELZpDb119ASngxpzmOu7uzwsM9E497XAAHGYd6YttPv4297fxIVwv08DipJUMBkZyLffFGbSjdDCvZYz8hOjXqSJVM5kGvvSArGx");'></div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-slate-100 text-lg font-bold group-hover:text-primary transition-colors">1984</h3>
+<p class="text-primary font-mono font-bold">$12.50</p>
+</div>
+<p class="text-primary/60 text-sm font-medium mb-4">George Orwell</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-primary/10 hover:bg-primary hover:text-background-dark border border-primary/30 text-primary text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
+                                </button>
+<button class="p-2 border border-primary/30 text-primary hover:bg-primary/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<div class="liquid-glass group rounded-2xl p-4 flex flex-col transition-all cursor-pointer">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-xl">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Classic fiction book cover with tree illustration" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDEWVPRJHOx7OsKjmum3ipruEqjHbZrcUNbBATf8MZYuWmS8IhlvjagTPPa6rR3Vvi6Srge-5FsN5mHHnfnh8O31OkWRWKsBXXsSbWuWvwG0mFr33n_9oNCbEIbNUFhCx5HLgSxMETXovo_9RoIq-459a-vnDjCI-xUsCF_MSu5UkCe6DkJga6nGNfoA85GEoxyiyON6Kublyr6v_soQu-YCOjZ9ngAgzm2Qv6QgPRFGmCGVddbKir-6nPzfaCdb5pD21JNHlR2MyRI");'></div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-slate-100 text-lg font-bold group-hover:text-primary transition-colors">To Kill a Mockingbird</h3>
+<p class="text-primary font-mono font-bold">$14.00</p>
+</div>
+<p class="text-primary/60 text-sm font-medium mb-4">Harper Lee</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-primary/10 hover:bg-primary hover:text-background-dark border border-primary/30 text-primary text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
+                                </button>
+<button class="p-2 border border-primary/30 text-primary hover:bg-primary/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<div class="liquid-glass group rounded-2xl p-4 flex flex-col transition-all cursor-pointer">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-xl">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Fantasy adventure book cover showing mountains" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2WA-hphn7q7Cj-D7wD60ejCtTDnPwPODnYBDK5CCuuwcGQ-QekOOQh6Kk0oeN71og9WH_gUpFz1Ifa2oErNtp3iWGU--spY5w8nLrUhhh9gf9PxvZqontC_o0M7qh19mA1FByK5vFOAocFUHylAHa_G5OykPObm5d-ngzmFSKhMZWG178-oDwpPDhOp5ellmCMBUkYUOduFp8uZo9gHjsPzbeWCMk6dT7eea7U4coEV7GYwEq-4sNEMY7fHtF_yYPeP6OCpRQjsEP");'></div>
+<div class="absolute top-2 right-2 bg-orange-500 px-2 py-1 rounded text-[10px] font-black text-white uppercase">-20%</div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-slate-100 text-lg font-bold group-hover:text-primary transition-colors">The Hobbit</h3>
+<div class="flex flex-col items-end">
+<p class="text-primary font-mono font-bold">$18.00</p>
+<p class="text-slate-500 line-through text-[10px]">$22.50</p>
+</div>
+</div>
+<p class="text-primary/60 text-sm font-medium mb-4">J.R.R. Tolkien</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-primary/10 hover:bg-primary hover:text-background-dark border border-primary/30 text-primary text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
+                                </button>
+<button class="p-2 border border-primary/30 text-primary hover:bg-primary/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<div class="liquid-glass group rounded-2xl p-4 flex flex-col transition-all cursor-pointer">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-xl">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Sci-fi themed book cover with minimalist aesthetic" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLQMWyImmPcBdsJlmDv1z3ThD4ltdVeKcRmbP1Gla7gnKvh4Jk0rYUYNb7MFO5aGF7xvkz4ub5iUtYq5iSDVMYvBmGs27AN-VOJvb7lHpBX7TbSKlhTc1TbL-0IbKjNZ9_0-tFoIiD4zPlwuYxmsx-B0SCyT2QgQjeBA-lqA4XSYpSGwynEHGSIoChHMnIf-hIJSU9zXo2JQ7I5VjBRH9c_ZM5tgHUxM1s_oRLwm1EnOLg3rc30prIIXTGnNn2COeyUGzd6nYVI2Hy");'></div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-slate-100 text-lg font-bold group-hover:text-primary transition-colors">Brave New World</h3>
+<p class="text-primary font-mono font-bold">$13.20</p>
+</div>
+<p class="text-primary/60 text-sm font-medium mb-4">Aldous Huxley</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-primary/10 hover:bg-primary hover:text-background-dark border border-primary/30 text-primary text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
+                                </button>
+<button class="p-2 border border-primary/30 text-primary hover:bg-primary/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<div class="liquid-glass group rounded-2xl p-4 flex flex-col transition-all cursor-pointer">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-xl">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Classic book cover with vintage texture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTeLaJ8Egma48m00VGTqKAENli2BaYagfWO8mVaIeK_KQI5XBm3WoPFUZWu0Nrxaa4mhu6eNUu2e8840u8AKWXJ--ges5Or-zCnjauTex_f10NpbSHWgaT78YvCz3ROXDTM_T_NheTZkZkOizFJmHGQkxaPngsM0RgOeX6qe619OyX1mpjuFTfrhD02IHY4E2fpxMAre2FBPM4vIppolp40gdsSNFns-PN4ajiJWdXy5gD4dlmBmawCt7yZg-a8kAtYoUBOfj43d3v");'></div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-slate-100 text-lg font-bold group-hover:text-primary transition-colors">Catcher in the Rye</h3>
+<p class="text-primary font-mono font-bold">$11.00</p>
+</div>
+<p class="text-primary/60 text-sm font-medium mb-4">J.D. Salinger</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-primary/10 hover:bg-primary hover:text-background-dark border border-primary/30 text-primary text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
+                                </button>
+<button class="p-2 border border-primary/30 text-primary hover:bg-primary/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<div class="liquid-glass group rounded-2xl p-4 flex flex-col transition-all cursor-pointer">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-xl">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern book cover with abstract shapes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARhau1X05ON1NSuGd_ej9zVfxWWaZjY_Jb5sDvl0kUIIXb71KJ8qrmUEzWEuLqXwCSQjLILipd0-oLRdcAbxr5Fc2zFu4N8KMZQwgqWLshgdcGAuqB0J1rR0T0HbM9vvZHBYuUzpP4OjWzHO6UQ1-s-6Q6QaZc4zqM3ZSKsiJ1NpdBvTH7z5lTS71SVKqExkGfyrz2CmXn1mIukR9xy29nUfvsmXTQYCDqjsPyp1CeRGuQoNfcHrQxCAqS2rSogAhnxck8oVvzXNG_");'></div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-slate-100 text-lg font-bold group-hover:text-primary transition-colors">Crime and Punishment</h3>
+<p class="text-primary font-mono font-bold">$16.50</p>
+</div>
+<p class="text-primary/60 text-sm font-medium mb-4">Fyodor Dostoevsky</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-primary/10 hover:bg-primary hover:text-background-dark border border-primary/30 text-primary text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
+                                </button>
+<button class="p-2 border border-primary/30 text-primary hover:bg-primary/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<div class="liquid-glass group rounded-2xl p-4 flex flex-col transition-all cursor-pointer">
+<div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-xl">
+<div class="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-110" data-alt="Philosophical book cover with minimalist art" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCDXI_MB6vgGyRNdUM0Tc5Es-bEGEPiSRz9BgEh7fTcr7Ftr7W5NyyEMOvZr0IC7bUrk0HfwCWRnrbn4Xilu6lVzSvz2dFLzSI1OP34EzwhiBXXzEFPDW4Xgr5tWaFZuDA4Xmbuu2giHv1jDTqL-iJFCqeC4YJ3Mw_9YtC5RUl7rBJXeDXk0h4TG23mgOuG1e10j2X3s8iUTjMwVspWyoAQBrZ3OEoICOzaET7FGaDZDmGqvqqiuymj6xTHwBpKNTCBv5gpB-P3OZLp");'></div>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-slate-100 text-lg font-bold group-hover:text-primary transition-colors">The Alchemist</h3>
+<p class="text-primary font-mono font-bold">$14.20</p>
+</div>
+<p class="text-primary/60 text-sm font-medium mb-4">Paulo Coelho</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-primary/10 hover:bg-primary hover:text-background-dark border border-primary/30 text-primary text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
+                                </button>
+<button class="p-2 border border-primary/30 text-primary hover:bg-primary/20 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 flex justify-center">
+<div class="flex gap-2 p-2 bg-primary/5 rounded-2xl border border-primary/10 backdrop-blur-sm">
+<button class="size-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary hover:bg-primary transition-all hover:text-background-dark">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-primary text-background-dark font-bold text-sm">1</button>
+<button class="size-10 flex items-center justify-center rounded-xl text-primary font-bold text-sm hover:bg-primary/10 transition-colors">2</button>
+<button class="size-10 flex items-center justify-center rounded-xl text-primary font-bold text-sm hover:bg-primary/10 transition-colors">3</button>
+<span class="size-10 flex items-center justify-center text-primary/40">...</span>
+<button class="size-10 flex items-center justify-center rounded-xl text-primary font-bold text-sm hover:bg-primary/10 transition-colors">12</button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary hover:bg-primary transition-all hover:text-background-dark">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-background-dark/90 border-t border-primary/10 py-10 px-10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6 flex items-center justify-center bg-primary/20 rounded">
+<span class="material-symbols-outlined text-sm">auto_stories</span>
+</div>
+<h2 class="text-slate-100 text-sm font-bold leading-tight tracking-tight uppercase">Bibliotheca</h2>
+</div>
+<p class="text-primary/40 text-[10px] tracking-widest font-mono uppercase">© 2024 BIBLIOTHECA DIGITAL CURATORS. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-6">
+<a class="text-primary/60 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="text-primary/60 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">alternate_email</span></a>
+<a class="text-primary/60 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">public</span></a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

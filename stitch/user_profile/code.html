@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#17bfcf",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#112021",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .liquid-glass {
+            background: rgba(23, 191, 207, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .quiet-scroll::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .quiet-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .quiet-scroll::-webkit-scrollbar-thumb {
+            background: rgba(23, 191, 207, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation -->
+<header class="flex items-center justify-between border-b border-primary/10 px-6 py-4 md:px-20 lg:px-40 sticky top-0 bg-background-dark/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-100 text-xl font-bold tracking-tight">Bibliotheca</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/30 overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="User profile avatar of a woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsVNjGiib5aFs222q6nWXFWOijojXRmkRB4RPkAFwBlNAMDIrAMwmI_vVgFFaWMnmYPIivqbqLWZT9K1uHi1PJP0c3-J8qZ__Lmc3Hq7QeqIJxabajHcd2LrG60cWkc4V5iPv-XYjV4u_2xGv0VNRy2lQlrALv5sRlIkxNLvXb4sEZ48a3vfpFX7HnDXx6SGxRhEmUKAsvx2GdJBnih52I5aU30F5w_f5wFYaUVNQDiV-nm6tj38837Sl1NtBS1cvzapXv--DY7Y-g"/>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-7xl mx-auto w-full px-6 py-12 md:px-20 lg:px-40">
+<!-- Profile Header -->
+<section class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-16">
+<div class="relative">
+<div class="size-32 md:size-40 rounded-full border-4 border-primary/20 p-1">
+<img class="h-full w-full rounded-full object-cover" data-alt="Large profile portrait of Eleanor Vance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGlvLkLFfOhXZv-12M86nvK3lSNzFNhUi5jAD1HU3Vv2ulVa7dIkPsd5A0oUkHvWVqliShpj8lETvmsfGaKoE61XX0cl0sj4CoIBD7GnttjQTnG6GAruQMlBjYV5weL7VbKJOWXL958sgSKTMeGCtHFmi57J9GHSfJuF_gCLmNeekZFEKi22P8tpIwq0FguIgYumekFEbA8L-GZYl8tOz1cc--X3qUFK8Di0WbqtMpjC8j10nZVFlet6IwKaMpFO6HeKfKm77K-pZK"/>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary text-background-dark rounded-full p-1.5 border-4 border-background-dark">
+<span class="material-symbols-outlined text-sm block font-bold">verified</span>
+</div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-end gap-3 mb-4">
+<h1 class="text-4xl font-bold text-slate-100">Eleanor Vance</h1>
+<span class="text-primary font-medium mb-1">@eleanor_reads</span>
+</div>
+<p class="text-slate-400 text-lg max-w-2xl leading-relaxed mb-6">
+                            Curator of quiet stories and forgotten histories. I find solace in the smell of old paper and the silence of a library at dawn.
+                        </p>
+<div class="flex flex-wrap justify-center md:justify-start gap-4">
+<button class="px-6 py-2 bg-primary text-background-dark font-bold rounded-lg hover:brightness-110 transition-all">Edit Profile</button>
+<button class="px-6 py-2 bg-primary/10 text-primary font-bold rounded-lg border border-primary/20 hover:bg-primary/20 transition-all">Share Shelf</button>
+</div>
+</div>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+<div class="liquid-glass p-6 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-bold text-primary mb-1">124</span>
+<span class="text-xs uppercase tracking-widest text-slate-500 font-semibold">Books Read</span>
+</div>
+<div class="liquid-glass p-6 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-bold text-primary mb-1">856</span>
+<span class="text-xs uppercase tracking-widest text-slate-500 font-semibold">Hours Spent</span>
+</div>
+<div class="liquid-glass p-6 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-bold text-primary mb-1">42</span>
+<span class="text-xs uppercase tracking-widest text-slate-500 font-semibold">Reviews</span>
+</div>
+<div class="liquid-glass p-6 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-bold text-primary mb-1">12</span>
+<span class="text-xs uppercase tracking-widest text-slate-500 font-semibold">Reading Streak</span>
+</div>
+</section>
+<!-- Currently Reading -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-slate-100">Currently Reading</h3>
+<a class="text-primary hover:underline text-sm font-medium" href="#">View all activity</a>
+</div>
+<div class="flex overflow-x-auto gap-8 pb-6 quiet-scroll">
+<div class="flex-none w-72 group">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+<img class="h-full w-full object-cover" data-alt="Book cover: The Shadow of the Wind" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2-7u9FAS7XbZfsmKYzcmybS7gIUdvVdsJCubyGbbB7qT7-4_0-Yi1prAQvQO8nxOY9VLcedE0LWce2sHqvGHyQ-p0rCGZ-5XDvZp3tZkLDhBXeu7ooZtK73tMkLTqPUjqpCTbeS7EE-uXBLF-8iQHW8ZqCsIK_Gfkv90sjyesZjhgsBO2bFc9cBvpJfW9xJzVy3-peiAkhOJ47AGSBVtTecS7mNiJ0LjTK6CkeUYpjh9ZSN9Vy0CFH1DLQqP5m7SmI7uRFCPiQZ9F"/>
+</div>
+<div class="px-1">
+<h4 class="text-slate-100 font-bold text-lg mb-1 group-hover:text-primary transition-colors">The Shadow of the Wind</h4>
+<p class="text-slate-500 text-sm mb-3">Carlos Ruiz Zafón</p>
+<div class="w-full bg-primary/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%] rounded-full"></div>
+</div>
+<p class="text-[10px] text-primary mt-2 font-bold uppercase tracking-tighter">65% Completed</p>
+</div>
+</div>
+<div class="flex-none w-72 group">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+<img class="h-full w-full object-cover" data-alt="Book cover: The Starless Sea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoY7ppvK_gtbuWavR7EUjQc_Yg0otdSsZt7T0X9vVe4DVP8_viKiWYL-R8h2JQqZ-IViV5li3axQYcoCj-PTwNCrJ68ylRFTKr2Wa_hTxJGqIOVqTwGihjy-gSuJ4oiaCiJkDPv77BophQx6rEAX3LYpX57jPRVD-VeNWSpWDKNQ5dC2Zns8Eb0im132K6Klr7xte7lL-1kUBDtiWIYl1XXPpIlqMJ9_SXOTPqCsHqUC2_wc1_Qjd0IsqWf_7jKvWxk6WbHoOGzq1Z"/>
+</div>
+<div class="px-1">
+<h4 class="text-slate-100 font-bold text-lg mb-1 group-hover:text-primary transition-colors">The Starless Sea</h4>
+<p class="text-slate-500 text-sm mb-3">Erin Morgenstern</p>
+<div class="w-full bg-primary/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[22%] rounded-full"></div>
+</div>
+<p class="text-[10px] text-primary mt-2 font-bold uppercase tracking-tighter">22% Completed</p>
+</div>
+</div>
+<div class="flex-none w-72 group">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+<img class="h-full w-full object-cover" data-alt="Book cover: Circe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATQHn6h_m4m45uPaFgP0dsjpyHznX-xyRHMU_E_C-25PKBrXRnt5KSrHBh9iszFtC2meinQgoZxCerKcNbE-RDiFdhhdsWES0HjG8nG9XccTuQPMGTZC1ggbmn5UF5iklQr8-_leJzQzaJjy3yvbmfwQTc1_qpUDwcuaa_y3LOjQqYKkoaOVHKv1VhCBTxlIIdC0iLwh4oLqEuzs9kTYuKeTPPsgkwCCRnKBBE6JG-kphnLatmRIkBnDwpqwP6hle6Jn2-Kk33j5oQ"/>
+</div>
+<div class="px-1">
+<h4 class="text-slate-100 font-bold text-lg mb-1 group-hover:text-primary transition-colors">Circe</h4>
+<p class="text-slate-500 text-sm mb-3">Madeline Miller</p>
+<div class="w-full bg-primary/10 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88%] rounded-full"></div>
+</div>
+<p class="text-[10px] text-primary mt-2 font-bold uppercase tracking-tighter">Almost finished</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Library Grid -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-slate-100">Want to Read</h3>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">grid_view</span></button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">reorder</span></button>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+<!-- Liquid Glass Cards -->
+<div class="liquid-glass rounded-xl p-3 group cursor-pointer hover:bg-primary/10 transition-all">
+<div class="aspect-[2/3] rounded-lg overflow-hidden mb-3">
+<img class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Book cover: The Night Circus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzejYcs3sOhcfslWsohR7cA29hjhfAs8bQ8t4N7rVp19j9QymZAvVPBi_rj6wHVvjvzx8grTU39FmV5cS5H9eTB4wdyBO3GGjKiob9aqp-mkJKg6YLV0lp96TEs4OHNryYixE6ityjlx9cVc4yfg9c8JgL_hc1e1bduxXlN0fdPBc02LcwURp0XhXVVIE1hw-xZN5uBvN-sjXqcLfnIh6N3ZWZnxCxZmArj9oikDy-aDP9eZFiuaLBknCymyznDFeV6Ul4rKUoRXXU"/>
+</div>
+<h5 class="text-slate-100 text-sm font-bold truncate">The Night Circus</h5>
+<p class="text-slate-500 text-[10px] truncate uppercase tracking-widest">Erin Morgenstern</p>
+</div>
+<div class="liquid-glass rounded-xl p-3 group cursor-pointer hover:bg-primary/10 transition-all">
+<div class="aspect-[2/3] rounded-lg overflow-hidden mb-3">
+<img class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Book cover: Piranesi" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmQeK0mwjasg2GffLXIVVTjGcXqve7B08ES2SL_yaqHVEPD4NxjVY9Gk907rrzYicwG7dDjte0KKDwbxSIXnIqml_9Pe01ISEXhQkm8sX53q_5UO200GL-AL_tNFxexmXdQKh911_vKeVqChq9AFbxWfBbhbtpPU0ujm28kuBszgpC-iZ_Xscrhevy9XGSAUQDN6iMPMXJFiQ_eASAawuZzzE2yvaHmjiHtU3Mpi_gTvxfEl_3FkfAAFUkqh8knWN4-fwLxcMyrCWB"/>
+</div>
+<h5 class="text-slate-100 text-sm font-bold truncate">Piranesi</h5>
+<p class="text-slate-500 text-[10px] truncate uppercase tracking-widest">Susanna Clarke</p>
+</div>
+<div class="liquid-glass rounded-xl p-3 group cursor-pointer hover:bg-primary/10 transition-all">
+<div class="aspect-[2/3] rounded-lg overflow-hidden mb-3">
+<img class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Book cover: The Secret History" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCswvaSscty7VDEYP71KKv9bKbBZmle--bj6Pjy6qAg3ftDKli8LgYv9FlrNZS7-9gdpSiro07i40alKb6kI9CwGhsoHgrX-vQ9UNOZfQxo9czF6SUEUvP8y4VLyBF7JRdJWqScqeeVOWLuxR5_Fk-zDg6gP5ugMX6IPgyNMaxG_DfnGxcvAH6gzV43HnThqwVvrzM6vPNMsoUuUAXcY2bwxWq3oQy2-yW-772-MsLSxsGsVtO__TrHKTOA9XKMFw1tkjTkbClX9X8x"/>
+</div>
+<h5 class="text-slate-100 text-sm font-bold truncate">The Secret History</h5>
+<p class="text-slate-500 text-[10px] truncate uppercase tracking-widest">Donna Tartt</p>
+</div>
+<div class="liquid-glass rounded-xl p-3 group cursor-pointer hover:bg-primary/10 transition-all">
+<div class="aspect-[2/3] rounded-lg overflow-hidden mb-3">
+<img class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Book cover: Normal People" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBubp7DgWqmkMM9d2KNHsE4Ky7SZEPSWtCbQ4mmTUw9cq1vsrYQvvqMwfkUwcywt0t6RWK4WO-oknd4MVxQmLaKu9SHbmiDcC64nh8JAmtWEsXk4ns3GWj0URLi4J_z7Jqu3WLi8M7xXF8WG8HqDItfW2nkZz7G6_KrEnMyFVbg4tA5PCJ85YIFV8tWc6kThOdB9xL46ii6GtxoCzWffOucJr2bg0VWWGzfTwMA2oDiZyHrSbWboF9Z9I2y_HCIJj0l1KoWUXp02X8r"/>
+</div>
+<h5 class="text-slate-100 text-sm font-bold truncate">Normal People</h5>
+<p class="text-slate-500 text-[10px] truncate uppercase tracking-widest">Sally Rooney</p>
+</div>
+<div class="liquid-glass rounded-xl p-3 group cursor-pointer hover:bg-primary/10 transition-all">
+<div class="aspect-[2/3] rounded-lg overflow-hidden mb-3">
+<img class="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Book cover: Song of Achilles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwXpMhRCcED5DvkZ1ozXgO4ZWHAoxiipsyE1yMx20YmLYNpfjBta-dFAcAES6OZzaMqboAQoAqpm7Jr79O-cWx6wQayE54x27cFyxupqhC--xxWeN2LelMsnOlprqd63Ik_-RmuwCMK09sg2kyGM4b7rOweO6qb3u0nhBxpEX8NjQp4g6CdfuQqjL4KRyRA7XOp1mqeqCHY_95n1kGGhRinD-c28BD0JK8IO6ijN0e5QrV4lTz3w_3iDaIa7Sr4a1YH91bYyNBMSxi"/>
+</div>
+<h5 class="text-slate-100 text-sm font-bold truncate">Song of Achilles</h5>
+<p class="text-slate-500 text-[10px] truncate uppercase tracking-widest">Madeline Miller</p>
+</div>
+</div>
+</section>
+<!-- Settings / Account Actions -->
+<section class="border-t border-primary/10 pt-12">
+<h3 class="text-2xl font-bold text-slate-100 mb-8">Account Settings</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="liquid-glass rounded-xl p-6 flex items-center justify-between hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 p-3 rounded-lg text-primary">
+<span class="material-symbols-outlined">person_outline</span>
+</div>
+<div>
+<h6 class="font-bold text-slate-100">Personal Information</h6>
+<p class="text-slate-500 text-xs">Email, name, and bio details</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600">chevron_right</span>
+</div>
+<div class="liquid-glass rounded-xl p-6 flex items-center justify-between hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 p-3 rounded-lg text-primary">
+<span class="material-symbols-outlined">lock_open</span>
+</div>
+<div>
+<h6 class="font-bold text-slate-100">Privacy &amp; Security</h6>
+<p class="text-slate-500 text-xs">Password and visibility controls</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600">chevron_right</span>
+</div>
+<div class="liquid-glass rounded-xl p-6 flex items-center justify-between hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 p-3 rounded-lg text-primary">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div>
+<h6 class="font-bold text-slate-100">Library Theme</h6>
+<p class="text-slate-500 text-xs">Customize your bookshelf aesthetic</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600">chevron_right</span>
+</div>
+<div class="liquid-glass rounded-xl p-6 flex items-center justify-between hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="bg-red-500/10 p-3 rounded-lg text-red-400">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<div>
+<h6 class="font-bold text-red-400">Sign Out</h6>
+<p class="text-slate-500 text-xs">Exit your library session</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-primary/10 py-12 px-6 md:px-40 text-center">
+<div class="flex justify-center gap-8 mb-6 text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+<a class="hover:text-primary transition-colors" href="#">About</a>
+</div>
+<p class="text-slate-600 text-sm">© 2024 Bibliotheca. The quiet place for stories.</p>
+</footer>
+</div>
+</div>
+</body></html>
