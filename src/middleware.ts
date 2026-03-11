@@ -6,8 +6,8 @@ export function middleware(request: NextRequest) {
     const token = request.cookies.get('auth_token')?.value;
 
     // Public paths that don't require authentication
-    const publicPaths = ['/login', '/signup', '/api'];
-    const isPublicPath = publicPaths.some(path => pathname.startsWith(path));
+    const publicPaths = ['/', '/login', '/signup', '/shop', '/api', '/cart'];
+    const isPublicPath = publicPaths.some(path => pathname === path || (path !== '/' && pathname.startsWith(path)));
 
     // Also allow static assets and images
     const isStaticAsset = pathname.includes('.') || pathname.startsWith('/_next');
