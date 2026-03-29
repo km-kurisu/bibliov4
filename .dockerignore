@@ -1,0 +1,8 @@
+.next/
+node_modules/
+data/
+*.sqlite
+*.db
+.env.local
+.env*.local
+.git/
