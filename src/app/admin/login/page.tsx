@@ -21,7 +21,7 @@ export default function AdminLoginPage() {
           <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-3xl -z-10" />
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/5 blur-3xl -z-10" />
 
-          <form action={loginAdmin} className="space-y-6">
+          <form action={loginAdmin as any} className="space-y-6">
             <div className="space-y-2">
               <label className="text-sm font-medium text-neutral-400 ml-1">Username</label>
               <div className="relative group">
