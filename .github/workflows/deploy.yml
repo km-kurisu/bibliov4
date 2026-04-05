@@ -1,0 +1,25 @@
+name: Deploy Bibliotheca
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull latest code
+        run: |
+          cd ~/app
+          git pull
+
+      - name: Rebuild and restart containers
+        run: |
+          cd ~/app
+          docker compose up -d --build
+
+      - name: Clean up old images
+        run: |
+          docker image prune -f
