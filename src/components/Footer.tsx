@@ -15,6 +15,7 @@ export default function Footer() {
                     <Link href="/" className="hover:text-cyan-400 transition-colors">Home</Link>
                     <Link href="/shop" className="hover:text-cyan-400 transition-colors">Shop</Link>
                     <Link href="/profile" className="hover:text-cyan-400 transition-colors">Profile</Link>
+                    <Link href="/admin/dashboard" className="hover:text-cyan-400 transition-colors">Admin</Link>
                 </nav>
 
                 <p className="max-w-2xl text-slate-500 text-sm leading-relaxed mb-16">

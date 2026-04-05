@@ -14,7 +14,9 @@ export default function AddToCartButton({ book, variant = "full" }: AddToCartBut
     const { addToCart } = useCart();
     const [added, setAdded] = useState(false);
 
-    const handleAdd = () => {
+    const handleAdd = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
         addToCart(book);
         setAdded(true);
         setTimeout(() => setAdded(false), 2000);

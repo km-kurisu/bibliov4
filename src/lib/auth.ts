@@ -140,3 +140,48 @@ export async function getUserLibrary() {
         return [];
     }
 }
+
+export async function loginAdmin(formData: FormData) {
+    const username = formData.get('username') as string;
+    const password = formData.get('password') as string;
+
+    if (!username || !password) {
+        return { error: 'Username and password are required.' };
+    }
+
+    try {
+        const admin = db.prepare('SELECT * FROM admin_users WHERE username = ?').get(username) as any;
+        if (!admin) {
+            return { error: 'Invalid admin credentials.' };
+        }
+
+        const isValid = await bcrypt.compare(password, admin.hashed_password);
+        if (!isValid) {
+            return { error: 'Invalid admin credentials.' };
+        }
+
+        (await cookies()).set('admin_token', admin.id, { httpOnly: true, path: '/' });
+        return { success: true };
+    } catch (e) {
+        console.error(e);
+        return { error: 'An unexpected error occurred.' };
+    }
+}
+
+export async function getAdminUser() {
+    const id = (await cookies()).get('admin_token')?.value;
+    if (!id) return null;
+
+    try {
+        const admin = db.prepare('SELECT id, username FROM admin_users WHERE id = ?').get(id) as any;
+        return admin || null;
+    } catch (e) {
+        console.error('getAdminUser error:', e);
+        return null;
+    }
+}
+
+export async function logoutAdmin() {
+    (await cookies()).delete('admin_token');
+    redirect('/admin/login');
+}

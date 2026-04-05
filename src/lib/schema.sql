@@ -20,6 +20,8 @@ CREATE TABLE books (
     carousel_image TEXT,
     is_bestseller INTEGER DEFAULT 0,
     discount_percent INTEGER DEFAULT 0,
+    ebook_url TEXT,
+    ebook_format TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -63,4 +65,15 @@ CREATE TABLE admin_users (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     last_login DATETIME,
     is_active INTEGER DEFAULT 1
+);
+
+CREATE TABLE reviews (
+    id TEXT PRIMARY KEY,
+    book_id TEXT NOT NULL,
+    user_id TEXT NOT NULL,
+    rating INTEGER NOT NULL,
+    content TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES profiles(id) ON DELETE CASCADE
 );

@@ -208,8 +208,8 @@ const books = rawBooks.map((b) => ({
 }));
 
 const insertBook = db.prepare(`
-    INSERT INTO books (id, title, author, price, category, description, image, synopsis, pages, language, published_year, rating, reviews_count, author_bio, author_image, carousel_image, is_bestseller)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO books (id, title, author, price, category, description, image, synopsis, pages, language, published_year, rating, reviews_count, author_bio, author_image, carousel_image, is_bestseller, ebook_url, ebook_format)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 
 const insertKeyword = db.prepare(`
@@ -236,6 +236,8 @@ db.transaction(() => {
       book.author_image || null,
       book.carousel_image || null,
       book.is_bestseller,
+      book.ebook_url || null,
+      book.ebook_format || "epub",
     );
     if (book.keywords) {
       for (const kw of book.keywords) {

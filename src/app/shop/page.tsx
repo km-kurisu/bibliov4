@@ -7,8 +7,15 @@ import Link from "next/link";
 import { ShoppingCart, LayoutGrid, List, ChevronDown } from "lucide-react";
 import AddToCartButton from "@/components/AddToCartButton";
 
-export default async function ShopPage() {
-    const books = await getBooks();
+export default async function ShopPage({ searchParams }: { searchParams: Promise<any> }) {
+    const params = await searchParams;
+    const books = await getBooks({
+        category: params.category,
+        minPrice: params.minPrice ? parseFloat(params.minPrice) : undefined,
+        maxPrice: params.maxPrice ? parseFloat(params.maxPrice) : undefined,
+        search: params.search,
+        sortBy: params.sortBy
+    });
 
     return (
         <div className="min-h-screen bg-[#0a191f] text-slate-200">
@@ -45,7 +52,7 @@ export default async function ShopPage() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
                             {books.map((book) => (
-                                <div key={book.id} className="group cursor-pointer">
+                                <div key={book.id} className="group">
                                     <Link href={`/shop/${book.id}`}>
                                         <div className="relative aspect-[3/4] bg-white rounded-2xl mb-6 overflow-hidden shadow-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-cyan-900/10">
                                             <Image
@@ -55,17 +62,17 @@ export default async function ShopPage() {
                                                 className="object-contain p-8 transition-transform duration-700 group-hover:scale-110"
                                             />
                                         </div>
-                                    </Link>
-                                    <div className="flex justify-between items-start pt-2">
-                                        <div className="flex-1 pr-4">
-                                            <h3 className="font-serif text-lg text-white mb-1 leading-tight group-hover:text-cyan-400 transition-colors uppercase tracking-tight">
-                                                {book.title}
-                                            </h3>
-                                            <p className="text-xs text-slate-500 mb-3">{book.author}</p>
-                                            <p className="text-cyan-400 font-bold">${book.price.toFixed(2)}</p>
+                                        <div className="flex justify-between items-start pt-2">
+                                            <div className="flex-1 pr-4">
+                                                <h3 className="font-serif text-lg text-white mb-1 leading-tight group-hover:text-cyan-400 transition-colors uppercase tracking-tight">
+                                                    {book.title}
+                                                </h3>
+                                                <p className="text-xs text-slate-500 mb-3">{book.author}</p>
+                                                <p className="text-cyan-400 font-bold">${book.price.toFixed(2)}</p>
+                                            </div>
+                                            <AddToCartButton book={book} variant="icon" />
                                         </div>
-                                        <AddToCartButton book={book} variant="icon" />
-                                    </div>
+                                    </Link>
                                 </div>
                             ))}
                         </div>

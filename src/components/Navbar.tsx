@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Search, ShoppingBag, User } from "lucide-react";
+import { Search, ShoppingBag, User, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCart } from "@/context/CartContext";
+import { logoutUser } from "@/lib/auth";
 
 export default function Navbar() {
     const { cartCount } = useCart();
@@ -42,11 +43,23 @@ export default function Navbar() {
                     )}
                 </Link>
 
-                <Link href="/profile" className="p-0.5 rounded-full border border-slate-700 hover:border-cyan-500/50 transition-all">
-                    <div className="w-8 h-8 rounded-full bg-[#f3e8d2] flex items-center justify-center overflow-hidden">
-                        <User className="w-5 h-5 text-slate-700" />
-                    </div>
-                </Link>
+                <div className="flex items-center gap-4 border-l border-slate-800 pl-4 ml-2">
+                    <Link href="/profile" className="p-0.5 rounded-full border border-slate-700 hover:border-cyan-500/50 transition-all">
+                        <div className="w-8 h-8 rounded-full bg-[#f3e8d2] flex items-center justify-center overflow-hidden">
+                            <User className="w-5 h-5 text-slate-700" />
+                        </div>
+                    </Link>
+
+                    <form action={logoutUser}>
+                        <button 
+                            type="submit" 
+                            className="p-2 text-slate-500 hover:text-red-400 transition-all rounded-lg hover:bg-red-500/10 cursor-pointer"
+                            title="Sign Out"
+                        >
+                            <LogOut className="w-5 h-5" />
+                        </button>
+                    </form>
+                </div>
             </div>
         </motion.nav>
     );

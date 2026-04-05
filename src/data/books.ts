@@ -18,6 +18,8 @@ export interface Book {
     is_bestseller?: boolean | number;
     discount_percent?: number;
     keywords?: string[];
+    ebook_url?: string;
+    ebook_format?: string;
 }
 
 export interface CarouselItem {

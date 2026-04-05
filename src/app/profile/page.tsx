@@ -1,20 +1,25 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import { BadgeCheck, Grid, List, User, Unlock, Palette, LogOut, ChevronRight } from "lucide-react";
 import { getCurrentUser, getUserLibrary, logoutUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export default async function ProfilePage() {
-    const user = await getCurrentUser();
-    const library = await getUserLibrary();
+    try {
+        const user = await getCurrentUser();
+        const library = await getUserLibrary();
 
-    if (!user) {
-        redirect("/login");
-    }
+        console.log('ProfilePage user:', user?.username);
 
-    const reading = library.filter(b => b.status === 'Reading');
-    const purchased = library.filter(b => b.status === 'Purchased');
+        if (!user) {
+            console.log('ProfilePage: No user found, redirecting to login');
+            redirect("/login");
+        }
+
+        const reading = library.filter(b => b.status === 'Reading');
+        const purchased = library.filter(b => b.status === 'Purchased');
 
     return (
         <main className="min-h-screen bg-[#0a191f] selection:bg-cyan-500/30 font-sans text-slate-100 flex flex-col">
@@ -186,6 +191,23 @@ export default async function ProfilePage() {
             <Footer />
         </main>
     );
-}
+    } catch (error) {
+        if (error instanceof Error && error.message === 'NEXT_REDIRECT') {
+            throw error;
+        }
+        // Handle Next.js redirect errors specifically
+        if ((error as any)?.digest?.includes('NEXT_REDIRECT')) {
+            throw error;
+        }
 
-import Link from "next/link";
+        console.error('ProfilePage crash:', error);
+        return (
+            <div className="min-h-screen bg-[#0a191f] text-white flex items-center justify-center">
+                <div className="text-center">
+                    <h1 className="text-2xl font-bold mb-4">Under Restoration</h1>
+                    <p className="text-slate-500">A librarian is tending to our records. Please revisit shortly.</p>
+                </div>
+            </div>
+        );
+    }
+}

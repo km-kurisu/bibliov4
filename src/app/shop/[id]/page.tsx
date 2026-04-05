@@ -4,12 +4,13 @@ import { getBook, getRelatedBooks } from "@/lib/actions";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Star, ArrowLeft, ShoppingBag, Bookmark, Globe, BookmarkCheck, Share2 } from "lucide-react";
+import { Star, ArrowLeft, ShoppingBag, Bookmark, Globe, BookmarkCheck, Share2, BookOpen } from "lucide-react";
 import AddToCartButton from "@/components/AddToCartButton";
 import { Book } from "@/data/books";
 
-export default async function BookDetailPage({ params }: { params: { id: string } }) {
-    const book = await getBook(params.id);
+export default async function BookDetailPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    const book = await getBook(id);
     if (!book) notFound();
 
     const relatedBooks = await getRelatedBooks(book.category, book.id);
@@ -97,6 +98,10 @@ export default async function BookDetailPage({ params }: { params: { id: string 
 
                         <div className="flex flex-col sm:flex-row gap-4 mb-12">
                             <AddToCartButton book={book} />
+                            <Link href={`/reader/${book.id}`} className="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white h-16 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-3 active:scale-95 shadow-xl shadow-cyan-500/10">
+                                <BookOpen className="w-5 h-5" />
+                                Read Now
+                            </Link>
                             <button className="flex-1 bg-slate-900 hover:bg-slate-800 text-white border border-slate-800 h-16 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-3 active:scale-95">
                                 <Bookmark className="w-5 h-5" />
                                 Add to Library
