@@ -1,0 +1,12 @@
+{
+  "name": "epub-extraction-tool",
+  "version": "1.0.0",
+  "description": "Extract book metadata and covers from EPUB files.",
+  "main": "extract.js",
+  "dependencies": {
+    "epub2": "^3.0.1",
+    "fs-extra": "^11.2.0"
+  },
+  "author": "Antigravity",
+  "license": "MIT"
+}
